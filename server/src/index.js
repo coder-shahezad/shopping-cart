@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import models from './models';
 import routes from './routes';
+import path from 'path';
 
 const app = express();
 
@@ -13,7 +14,8 @@ const app = express();
 app.use(cors());
 
 // Built-In Middleware
-
+app.use(express.static('src'));
+app.use('/images', express.static('images'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
