@@ -69,6 +69,25 @@ const Products = () => {
     setCategories(result);
   };
 
+  const handleAddToCart = (product) => {
+    let cartItems = localStorage.getItem("cartItems");
+    cartItems = JSON.parse(cartItems) || [];
+    if (cartItems?.length) {
+      const index = cartItems.findIndex((item) => item.id === product.id);
+      if (index !== -1) {
+        cartItems[index] = {
+          ...product,
+          productCount: cartItems[index].productCount + 1,
+        };
+      } else {
+        cartItems.push({ ...product, productCount: 1 });
+      }
+    } else {
+      cartItems.push({ ...product, productCount: 1 });
+    }
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+
   return (
     <div className="row vh-100">
       {isDesktop && (
@@ -113,7 +132,7 @@ const Products = () => {
       <div className="col-lg-9">
         <div className="row g-2 vh-100 overflow-scroll products mt-4">
           {filteredProducts.map((product) => (
-            <div className="col-lg-3 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-4 col-sm-6" key={product.id}>
               <Card key={product.id} className="product">
                 <Card.Body className="d-flex justify-content-between flex-column">
                   <Card.Title className="product-title overflow-hidden">
@@ -130,7 +149,12 @@ const Products = () => {
                   </Card.Text>
                   <div className="d-flex justify-content-between align-items-center">
                     <span>MRP Rs.{product.price}</span>
-                    <Button variant="danger">Buy Now</Button>
+                    <Button
+                      variant="danger"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Buy Now
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>

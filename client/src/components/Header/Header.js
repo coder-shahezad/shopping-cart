@@ -31,10 +31,17 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link>
-                <Link to="/"> Home </Link>
+                <Link to="/" className="text-secondary text-decoration-none">
+                  Home
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/products"> Products </Link>
+                <Link
+                  to="/products"
+                  className="text-secondary text-decoration-none"
+                >
+                  Products
+                </Link>
               </Nav.Link>
             </Nav>
             {!isTablet && (
@@ -48,10 +55,20 @@ const Header = () => {
             )}
             <Nav>
               <Nav.Link>
-                <Link to="/login"> SignIn </Link>
+                <Link
+                  to="/login"
+                  className="text-secondary text-decoration-none"
+                >
+                  SignIn
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/register"> Register </Link>
+                <Link
+                  to="/register"
+                  className="text-secondary text-decoration-none"
+                >
+                  Register
+                </Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

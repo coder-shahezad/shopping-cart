@@ -40,10 +40,10 @@ const Home = () => {
   };
 
   return (
-    <>
+    <section className="home">
       <Offers offers={offers} />
       <Categories categories={categories} handleCategory={handleCategory} />
-    </>
+    </section>
   );
 };
 
