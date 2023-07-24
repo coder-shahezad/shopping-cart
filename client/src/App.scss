@@ -1,0 +1,13 @@
+.home,
+.products {
+  margin-bottom: 100px;
+  .product {
+    height: 30rem;
+    &-title {
+      height: 70px;
+    }
+    &-description {
+      height: 100px;
+    }
+  }
+}
